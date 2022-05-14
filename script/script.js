@@ -26,10 +26,9 @@ function renderMessage() {
     var listedItems = document.querySelector('#display-items')
 
     if(copyPaste !== null) {
+        var x = 0
         
-        for(var i = 0; i < userIngredientListItems.length; i++) {
-           createDivInput(userIngredientListItems[i])
-        }
+        createDivInput(userIngredientListItems[x])
 
         function createDivInput (food) {
             var itemsEntered = document.createElement('div')
@@ -41,5 +40,6 @@ function renderMessage() {
             listedItems.append(itemsEntered)
             listedItems.append(enterText)
         }
+        x++
     }
 }
