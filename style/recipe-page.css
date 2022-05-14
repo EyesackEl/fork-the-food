@@ -1,0 +1,156 @@
+body {
+    background-color: rgb(58, 73, 58);
+    color:antiquewhite;
+}
+header, .recipe-container {
+    background-color: rgb(68, 95, 68);
+    border: 3px solid rgb(30, 34, 30);
+    filter: drop-shadow(0px 0px 10px rgb(41, 46, 41));
+    border-radius: 10px;
+    width: 100vw;
+}
+header {
+    text-align: center;
+    margin: 10px auto;
+    padding: 50px;
+}
+header h1 {
+    filter: drop-shadow(0px 0px 4px rgb(30, 34, 30));
+}
+.recipe-container {
+    width: 95vw;
+}
+.main-text {
+    padding: 30px;
+}
+
+button {
+    margin: 5px;
+}
+.favorite-button {
+    background-color: rgb(255, 208, 0);
+    color:rgb(66, 71, 66);
+
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.356);
+    position: absolute;
+    left: 2%;
+    top: 4%;
+    font-size: 500%;
+    line-height: 0;
+    height: 43px;
+    width: 43px;
+    padding: auto;
+    vertical-align: middle;
+    text-align: left;
+    border: none;
+    border-radius: 40px;
+    -webkit-transition: width .5s cubic-bezier(.36,.26,0,1.02);
+    -moz-transition: width .5s cubic-bezier(.36,.26,0,1.02);
+    -o-transition: width .5s cubic-bezier(.36,.26,0,1.02);
+    transition: width .5s cubic-bezier(.36,.26,0,1.02);
+}
+.fav-button-text {
+    text-shadow: 0px -1px 0px rgb(14, 14, 14);
+    position: absolute;
+    top: 13px;
+    left: 0px;
+    
+}
+.fav-button-text:hover {
+    filter: drop-shadow(0px 0px 3px white);
+}
+.favorite-button:hover {
+    background-color: rgb(255, 208, 0);
+    width: 170px;
+    transition: width .5s cubic-bezier(.36,.26,0,1.02) .1s,
+    color .7s cubic-bezier(.36,.26,0,1.02), 
+    filter .1s cubic-bezier(.36,.26,0,1.02) .3s, 
+    box-shadow .5s cubic-bezier(.36,.26,0,1.02);
+}
+.fav-button-text:hover::after {
+    position: absolute;
+    font-weight: 700;
+    content: "Favorite recipe?";
+    white-space: nowrap;
+    color: rgb(65, 58, 34);
+    opacity: 0;
+    line-height: 1;
+    font-size: 20%;
+    top: -40px;
+    margin: 20px;
+    padding: 20px;
+    left: 0px;
+    text-shadow: none;
+    -webkit-animation: fadeIn 1.5s cubic-bezier(.34,.3,0,1.02) forwards;
+    -moz-animation: fadeIn 1.5s cubic-bezier(.34,.3,0,1.02) forwards;
+    -o-animation: fadeIn 1.5s cubic-bezier(.34,.3,0,1.02) forwards;
+    animation: fadeIn .5s cubic-bezier(.34,.3,0,1.02) .35s forwards;
+}
+.fav-button-text::after {
+    filter: none;
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        display:contents;
+        opacity: 0;
+    }
+
+    1% {
+        display:contents;
+        opacity: 0;
+    }
+    
+    100% {
+        display:contents;
+        opacity: 1;
+    }
+}
+@-moz-keyframes fadeIn {
+    0% {
+        display:contents;
+        opacity: 0;
+    }
+
+    1% {
+        display:contents;
+        opacity: 0;
+    }
+    
+    100% {
+        display:contents;
+        opacity: 1;
+    }
+}
+@-o-keyframes fadeIn {
+    0% {
+        display:contents;
+        opacity: 0;
+    }
+
+    1% {
+        display:contents;
+        opacity: 0;
+    }
+    
+    100% {
+        display:contents;
+        opacity: 1;
+    }
+}
+@keyframes fadeIn {
+    0% {
+        display:contents;
+        opacity: 0;
+    }
+
+    1% {
+        display:contents;
+        opacity: 0;
+    }
+    
+    100% {
+        display:contents;
+        opacity: 1;
+    }
+}

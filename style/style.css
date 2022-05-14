@@ -1,101 +1,19 @@
-:root {
-    --main-color: #2c373b;
-    --secondary-color: #8B90A0;
-    --purple: #4a4771;
-    --light: #d4d7df;
-}
-
 body {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color: var(--main-color);
-    cursor: default;
+    background-color: rgb(58, 73, 58);
+    color:antiquewhite;
 }
-
-
 header {
-    background-color: var(--secondary-color);
-    margin: 5 0 0 0;
-}
-
-#view-highscore {
-    background-color: var(--purple);
-    border-radius: 0px 5px 5px 0px;
-    width: 130px;
-}
-
-#view-highscore:hover {
-    color: var(--light);
-    cursor: pointer;
-}
-
-#timer {
-    background-color: var(--light);
-    position: relative;
-    bottom: 68px;
-    float: right;
-    border: solid 2px var(--main-color);
-    border-radius: 5px;
-}
-
-#quiz-box {
-    background-color: var(--secondary-color);
-    margin: 5px auto;
-    padding: 10px;
-    /* border: dotted 2px red; */
     text-align: center;
+    background-color: rgb(68, 95, 68);
+    border: 3px solid rgb(30, 34, 30);
+    border-radius: 10px;
+    margin: 20px auto;
+    padding: 50px;
+    filter:drop-shadow(0px 0px 10px rgb(41, 46, 41))
 }
-
-.filler, .answers {
-    background-color: var(--purple);
-    margin: 5px auto;
-    border: solid 2px var(--main-color);
-    border-radius: 5px;
-    text-align: center;
-    width: 350px;
+header h1 {
+    filter: drop-shadow(0px 0px 3px rgb(41, 46, 41))
 }
-
-.answers:hover {
-    color: var(--light);
-    cursor: pointer;
-}
-
-#start-button {
-    background-color: var(--purple);
-    border: solid 2px var(--secondary-color);
-    border-radius: 5px;
-    text-align: center;
-    width: 125px;
-    height: 25px;
-    line-height: 25px;
-    margin: auto;
-}
-
-#start-button:hover {
-    color: var(--light);
-    cursor: pointer;
-}
-
-#highscore-box {
-    background-color: var(--secondary-color);
-    margin: 5px auto;
-    display: none;
-    padding: 2px;
-}
-
-#clear-button {
-    background-color: var(--purple);
-    position: relative;
-    float: right;
-    border: solid 2px var(--secondary-color);
-    border-radius: 5px;
-    margin: 7px 0px;
-    text-align: center;
-    width: 175px;
-    height: 25px;
-    line-height: 25px;
-}
-
-#clear-button:hover {
-    color: var(--light);
-    cursor: pointer;
+main {
+    display: column;
 }
