@@ -23,18 +23,23 @@ function enterButton() {
 
 function renderMessage() {
     var copyPaste = JSON.parse(localStorage.getItem("userIngredientListItems"));
+    var listedItems = document.querySelector('#display-items')
 
     if(copyPaste !== null) {
         
-        for(i = 0; i < copyPaste.length; i++) {
-            var listedItems = document.querySelector('#display-items')
-            var itemsEntered = document.createElement('div')
-
-            itemsEntered = copyPaste[i]
-
-            itemsEntered.textContent = copyPaste
-            listedItems.appendChild(itemsEntered)
+        for(var i = 0; i < userIngredientListItems.length; i++) {
+           createDivInput(userIngredientListItems[i])
         }
-        
+
+        function createDivInput (food) {
+            var itemsEntered = document.createElement('div')
+            var enterText = document.createElement('h3')
+
+            enterText.textContent = userIngredientListItems.slice(-1)
+            console.log(userIngredientListItems.slice(-1))
+
+            listedItems.append(itemsEntered)
+            listedItems.append(enterText)
+        }
     }
 }
