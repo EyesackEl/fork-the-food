@@ -28,5 +28,3 @@ function getIngredient() {
 function renderIngredient() {
 
 }
-
-$('#ingForm').submit(getIngredient)
