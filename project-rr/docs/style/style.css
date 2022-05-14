@@ -1,0 +1,17 @@
+body {
+    background-color: rgb(58, 73, 58);
+    color:antiquewhite;
+}
+header {
+    text-align: center;
+    background-color: rgb(68, 95, 68);
+    border: 3px solid rgb(30, 34, 30);
+    border-radius: 10px;
+    margin: 20px auto;
+    padding: 50px;
+    filter:drop-shadow(0px 0px 10px rgb(41, 46, 41))
+}
+
+main {
+    display: column;
+}
