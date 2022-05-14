@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fork the Food!</title>
+    <!-- Bootstrap -->
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
+    rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+    crossorigin="anonymous"
+    >
+    <!-- jQuery UI -->
+    <link
+    rel="stylesheet" 
+    href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"
+    >
+    <!--Local CSS-->
+    <link
+    href = './style/home-page.css'
+    rel = 'stylesheet'
+    >
+</head>
+<body>
+    <div class = 'container-fluid text-center py-4'>
+        <h1>Fork the Food</h1>
+    </div>
+    <br>
+    <div class = 'container'>
+        <div class = 'row'>
+            <div class = 'col text-center'>
+                <div class="container bdr">
+                    <h4>Enter Ingredients Below</h4>
+                    <div class="ui-widget">
+                        <form id="ingForm" class="py-2">
+                            <input type="text" id="ingInput">
+                        </form>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-lg my-2 btn-primary">Generate Recipe</button>
+            </div>
+            <div class = 'col'>
+                <div id ='userIngList' class = 'container pb-2 bdr'>
+                    <div class = 'row text-center mt-2 py-2 bdr'> <strong>Apples</strong></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+    </script>
+
+    <!-- jQuery UI -->
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+    integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer">
+    </script>
+
+    <!-- Local JavaScript -->
+    <script
+    src="./script/home-page.js">
+    </script>
+</body>
+</html>
