@@ -1,0 +1,42 @@
+body {
+    background-color: rgb(58, 73, 58);
+    color:antiquewhite;
+}
+header, .input-ingredients, .saved-ingredients {
+    background-color: rgb(68, 95, 68);
+    border: 3px solid rgb(30, 34, 30);
+    filter: drop-shadow(0px 0px 10px rgb(41, 46, 41));
+    border-radius: 10px;
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+}
+header {
+    text-align: center;
+    margin: 10px auto;
+    padding: 50px;
+}
+header h1 {
+    filter: drop-shadow(0px 0px 4px rgb(30, 34, 30));
+}
+main {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+main .container {
+    width: 100%;
+}
+.main-text {
+    padding: 30px;
+}
+#listed-ing {
+    background-color: rgba(30, 34, 30, 0.655);
+    border-radius: 10px;
+    margin: 2px;
+    padding: 7px;
+}
+
+button {
+    margin: 5px;
+}
