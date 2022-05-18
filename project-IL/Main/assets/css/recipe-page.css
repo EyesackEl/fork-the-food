@@ -29,6 +29,15 @@ header h1 {
     padding: 30px;
 }
 
+#recName {
+    text-decoration: none;
+    color: antiquewhite;
+}
+
+#recName:hover {
+    color: white;
+}
+
 button {
     margin: 5px;
 }
