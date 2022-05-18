@@ -16,29 +16,28 @@
         rel="stylesheet" 
         href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"
        >
-
+       <!-- Local CSS -->
        <link
        href = './style/recipe-page.css'
        rel = 'stylesheet'
        >
-
     <title>Fork the Food!</title>
 </head>
 <body>
-    <header class = 'container custom-header text-center'>
-        <h1>Your Forked Food!</h1>
-    </header>
+    <div class = 'container.fluid bdr text-center'>
+        <h1>Your Forked Food !</h1>
+    </div>
 
-    <div class = 'container recipe-container'>
+    <div class = 'container'>
         <div class = 'row'>
-            <div class = 'col main-text text-center'>
+            <div class = 'col text-center'>
                 <div class = 'container bdr'>
                     <p>Your Recipe:</p>
 
-                    <a id = 'recName'><h5>Recipe Name</h5></a>
+                    <a ><h5>Recipe Name</h5></a>
 
                     <div>
-                        <a><img src = 'https://spoonacular.com/recipeImages/716429-556x370.jpg' alt = 'Picture of Fetched Recipe' width = '150px' height = '100px'></a>
+                        <a><img src = '' alt = 'Picture of Fetched Recipe' width = '150px' height = '100px'></a>
                     </div>
 
                     <br>
@@ -64,33 +63,33 @@
 
                     <br>
 
-                    <button type='button' id = 'favBtn' class ='btn favorite-button btn-sm btn-success'>
+                    <button type='button' class ='btn favorite-button btn-sm btn-success'>
                         <div class="fav-button-text">
                             <span id="star">⋆</span>
                         </div>
                     </button>
                 </div>
-                <button type="button" class ='btn btn-lg btn-success'>Fork Another Food!</button>
+                <button type="button" class = 'btn btn-lg btn-success' id = 'backBtn'>Fork Another Food!</button>
             </div>
         </div>
     </div>
-<!-- jQuery -->
-<script
-src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
-</script>
-
-<!-- jQuery UI -->
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
-integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
-crossorigin="anonymous"
-referrerpolicy="no-referrer">
-</script>
-
-<!-- Local JavaScript -->
-<script
-src="./script/recipe-page.js">
-</script>
+        <!-- jQuery -->
+        <script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+        </script>
+    
+        <!-- jQuery UI -->
+        <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+        integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer">
+        </script>
+    
+        <!-- Local JavaScript -->
+        <script
+        src="./script/recipe-page.js">
+        </script>
 
 </body>
 </html>

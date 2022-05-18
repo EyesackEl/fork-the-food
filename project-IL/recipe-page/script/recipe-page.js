@@ -4,8 +4,6 @@ var backBtnEL = document.getElementById('backBtnEL');
 var recipeLinks = document.querySelectorAll('a');
 var recipeImg = document.querySelector('img');
 
-console.log(recipeLinks)
-
 function getRandom(max) {
     return Math.floor(Math.random() * max)
 }
@@ -20,13 +18,26 @@ function getIng() {
     getRecipe(ingList);
 }
 
-function renderRecipe(infoRes) {
+function renderRecipe(infoRes, haveIng) {
     for (i = 0; i < recipeLinks.length; i++) {
         recipeLinks[i].setAttribute('href', infoRes.sourceUrl)
     }
 
+    $('#recName').text(infoRes.title)
+
+    $('#recName').css ({
+        'text-decoration': 'none',
+        'text-underline': 'none'
+        })
     recipeImg.src = infoRes.image 
 
+    var haveIngArr = [];
+
+    for (i = 0; i < haveIng.length; i++) {
+        haveIngArr.push(haveIng[i].name)
+    }
+
+    console.log(haveIngArr)
 }
 
 // fetches and returns an id of a recipe with matching ingredients
@@ -44,16 +55,18 @@ function getRecipe(ingList) {
 
             var chosenRecipe = getRandom(recipeRes.length);
 
-            recipeId = recipeRes[chosenRecipe].id;
+            var recipeId = recipeRes[chosenRecipe].id;
+
+            var haveIng = recipeRes[chosenRecipe].usedIngredients
             console.log(recipeId);
-            getRecipeInfo(recipeId)
+            getRecipeInfo(recipeId, haveIng)
+            
         })
 }
 
 // fetches the recipe with the corresponding ID sends it to the function that handles rendering
-function getRecipeInfo(recipeId) {
+function getRecipeInfo(recipeId, haveIng) {
     var infoQueryUrl = 'https://api.spoonacular.com/recipes/' + recipeId +'/information?apiKey=806c344810ec4b04aedcec77db04b143'
-    console.log(infoQueryUrl)
 
     fetch(infoQueryUrl) 
         .then(function(response) {
@@ -63,7 +76,7 @@ function getRecipeInfo(recipeId) {
         })
         .then(function(infoRes) {
             console.log(infoRes)
-            renderRecipe(infoRes)
+            renderRecipe(infoRes, haveIng)
         })
 }
 
