@@ -1,15 +1,15 @@
-var ingredientList = document.querySelector('#inputIngredientsList');
-var generate = document.querySelector('#generateButton');
+var ingredientList = document.querySelector('#ingredient-input');
+var addIng = document.querySelector('#ingInput');
 var ulItems = document.querySelector('#ulItems');
 var loStoKeySelect = 0;
 
-generate.addEventListener('click', enterButton);
+addIng.addEventListener('click', enterButton);
 
 
 function enterButton() {
     var userInput = document.querySelector('input').value;
     
-    if(document.getElementById('inputIngredientsList').value.length == 0) {
+    if(document.getElementById('ingredient-input').value.length == 0) {
         alert('blank');
 
     }else {
@@ -28,3 +28,18 @@ function enterButton() {
         loStoKeySelect++;
     }
 }
+
+
+$( function() {
+    var availableTags = [
+      "Apple",
+      "Banana",
+      "Flour",
+      "Salt",
+      "Pepper"
+    ];
+
+    $( "#ingInput" ).autocomplete({
+      source: availableTags
+    });
+  });
