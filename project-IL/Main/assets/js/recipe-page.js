@@ -1,5 +1,5 @@
 var favBtnEl = document.getElementById('favBtn');
-var backBtnEL = document.getElementById('backBtnEL');
+var homeBtnEl = document.querySelector('#homeBtn');
 var recipeNameEl = document.querySelector('#recName');
 var ingListEl = document.querySelector('#ingList');
 var recipeLinks = document.querySelectorAll('a');
@@ -9,16 +9,22 @@ function getRandom(max) {
     return Math.floor(Math.random() * max)
 }
 
+// Decides whether to render the recipe via ingredients or recipeID
 function init() {
-    // var ingList = 'file:///C:/Users/isaac/OneDrive/Desktop/Bootcamp/project-1/project-IL/recipe-page/recipe-page.html?ing=apple,banana,flour,sugar'
-    
-    var ingList = document.location.search;
-    ingList = (ingList.split('='))[1].split(',').join(',+');
-    console.log(ingList)
-    // ingArr = ingArr[1].split(',');
-    getRecipe(ingList);
+    // var searchParams = 'file:///C:/Users/isaac/OneDrive/Desktop/Bootcamp/project-1/project-IL/main/recipe-page.html?id=716433';
+    var searchParams = document.location.search;
+    if (searchParams.includes('id')) {
+        var recipeId = (searchParams.split('='))[1];
+        var haveIng = [];
+        getRecipeInfo(recipeId, haveIng);
+    } else {
+        var ingList = (searchParams.split('='))[1].split(',').join(',+');
+        getRecipe(ingList);
+    }
+
 }
 
+// Handles all rendering
 function renderRecipe(infoRes, haveIng) {
     var ingArr = [];
     var haveIngArr = [];
@@ -41,33 +47,48 @@ function renderRecipe(infoRes, haveIng) {
     console.log(ingArr)
     console.log(haveIngArr)
 
-    // for (var i = 0; i < ingArr.length; i++) {
-    //     for (var j = 0; j < haveIngArr.length; j++ ) {
-    //         if (ingArr[i] === haveIngArr[j]) {
-    //             var ingListItem = document.createElement('li');
-    //             $(ingListItem).text(ingArr[i])
-    //             $(ingListItem).css('color', 'green')
-    //             console.log(ingArr[i])
-    //         } else {
-    //             var ingListItem = document.createElement('li');
-    //             $(ingListItem).text(ingArr[i])
-    //         }
-    //     }
-    //     ingListEl.append(ingListItem)
-    // }
+
 
     for (var i = 0; i < ingArr.length; i++) {
-    var ingListItem = document.createElement('li');
-    $(ingListItem).text(ingArr[i])
-    ingListEl.append(ingListItem)
+        var ingListItem = document.createElement('li');
+
+        // Cross references users inputted ingredients with the ingredients the recipe uses
+        //and makes them render a different color
+        for (var j = 0; j < haveIngArr.length; j++ ) {
+            if (ingArr[i] === haveIngArr[j]) {
+                $(ingListItem).css('color', 'green');
+            }
+        }
+
+        // $(ingListItem).css('list-style-position', 'inside');
+
+        $(ingListItem).text(ingArr[i])
+        
+        ingListEl.append(ingListItem)
     }
 
     
 }
 
-// fetches and returns an id of a recipe with matching ingredients
+// Fetches the recipe with the corresponding ID sends it to the function that handles rendering
+function getRecipeInfo(recipeId, haveIng) {
+    var infoQueryUrl = 'https://api.spoonacular.com/recipes/' + recipeId +'/information?apiKey=10ac6b34fd89405ea77249343be0c034'
+
+    fetch(infoQueryUrl) 
+        .then(function(response) {
+            if (response.ok) {
+                return response.json();
+            }
+        })
+        .then(function(infoRes) {
+            console.log(infoRes)
+            renderRecipe(infoRes, haveIng)
+        })
+}
+
+// Fetches and returns an id of a recipe with matching ingredients
 function getRecipe(ingList) {
-    var recipeQueryUrl = 'https://api.spoonacular.com/recipes/findByIngredients?apiKey=8d40068b6a7e40cd931a1e0999d491bb&ingredients=' + ingList;
+    var recipeQueryUrl = 'https://api.spoonacular.com/recipes/findByIngredients?apiKey=10ac6b34fd89405ea77249343be0c034&ingredients=' + ingList;
 
     fetch(recipeQueryUrl) 
         .then(function(response) {
@@ -83,26 +104,21 @@ function getRecipe(ingList) {
             var recipeId = recipeRes[chosenRecipeNum].id;
 
             var haveIng = recipeRes[chosenRecipeNum].usedIngredients
+
             console.log(recipeId);
-            getRecipeInfo(recipeId, haveIng)
-            
+
+            getRecipeInfo(recipeId, haveIng);            
         })
 }
 
-// fetches the recipe with the corresponding ID sends it to the function that handles rendering
-function getRecipeInfo(recipeId, haveIng) {
-    var infoQueryUrl = 'https://api.spoonacular.com/recipes/' + recipeId +'/information?apiKey=8d40068b6a7e40cd931a1e0999d491bb'
+// Sends user back to the home page when 'fork another food' button is pressed
+homeBtnEl.addEventListener('click', function() {
+    location.assign('./home-page.html')
+})
 
-    fetch(infoQueryUrl) 
-        .then(function(response) {
-            if (response.ok) {
-                return response.json();
-            }
-        })
-        .then(function(infoRes) {
-            console.log(infoRes)
-            renderRecipe(infoRes, haveIng)
-        })
-}
+// Handles adding a recipe to the favorites list
+favBtnEl.addEventListener('click', function () {
+    
+})
 
 init();

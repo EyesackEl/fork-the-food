@@ -37,34 +37,9 @@ function getIng() {
     console.log(allIngArr)
 
     sendIng(allIngArr)
+
+
 }
-
-
-
-// function renderMessage() {
-//     var copyPaste = JSON.parse(localStorage.getItem("userIngredientListItems"));
-//     var listedItems = document.querySelector('#display-items');
-
-//     if(copyPaste !== null) {
-//         var x = 0;
-        
-//         createDivInput(userIngredientListItems[x]);
-
-//         function createDivInput (food) {
-//             var itemsEntered = document.createElement('div');
-//             var enterText = document.createElement('h3');
-
-//             itemsEntered.setAttribute("id", "listed-ing");
-
-//             enterText.textContent = userIngredientListItems.slice(-1);
-//             console.log(userIngredientListItems.slice(-1));
-
-//             listedItems.append(itemsEntered);
-//             itemsEntered.append(enterText);
-//         }
-//         x++;
-//     }
-// };
 
 function renderIngList(ingName) {
     var ingDiv = document.createElement('div')
