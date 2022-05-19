@@ -38,6 +38,12 @@ header h1 {
     color: white;
 }
 
+#ingList {
+    text-align: center;
+    width: 50%;
+    margin: auto;
+}
+
 button {
     margin: 5px;
 }
