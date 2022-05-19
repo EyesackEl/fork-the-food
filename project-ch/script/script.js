@@ -7,6 +7,7 @@ var userIngredientListItems = []
 var loStoKeySelect = 0;
 
 generate.addEventListener('click', enterButton);
+clearButton.addEventListener('click', clearAll)
 
 
 function enterButton() {
@@ -16,6 +17,8 @@ function enterButton() {
         alert('blank');
 
     }else {
+        ingredientList.value = ""
+
         var listedItems = document.querySelector('#display-items');
 
         var itemsEntered = document.createElement('div');
@@ -31,6 +34,16 @@ function enterButton() {
         loStoKeySelect++;
         renderMessage()
     }
+}
+
+function clearAll () {
+    function removeAllChildNodes(parent) {
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+        }
+    }
+    ingredientList.value = ""
+    removeAllChildNodes(listedItems);
 }
 
 function renderMessage() {
