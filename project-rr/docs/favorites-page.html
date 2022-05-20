@@ -15,7 +15,7 @@
     >
 
     <link
-    href = './style/home-page.css'
+    href = './style/favorites-page.css'
     rel = 'stylesheet'
     >
     <title>Fork the Food!</title>
@@ -26,34 +26,22 @@
     </header>
 
     <main>
-      <div class="row container">
-          <div class="col input-ingredients">
-              <h3>Input ingredients:</h3>
-              <br>
-              <input class="form-control form-control-lg" id="ingredient-input" type="text" placeholder="enter ingredient">
-              <br>
-              <div class="suggestion-dropdown-menu">
-                  <a class="dropdown-item" href="#">Regular link</a>
-                  <a class="dropdown-item active" href="#">Active link</a>
-                  <a class="dropdown-item" href="#">Another link</a>
-              </div>
-              <div class="ui-widget">
-                <form id="ingForm" class="py-2">
-                  <button type="button" id="ingInput" class="btn btn-primary btn-lg">Add Ingredient</button>
-                </form>
-              </div>
-          </div>
-          <div class="col saved-ingredients">
-              <h3>Display Ingredients:</h3>
-              <div class="list-group" id="display-items">
+        <div class="row container">
+            <div class="col saved-favorites">
+                <h3 class="saved-favorites-h3">Saved favorites:</h3>
+                <div class="list-group" id="display-items">
             
                   
-              </div>
-          </div>
-      </div>
+                </div>
+            </div>
+            <div class="col ingredients-used">
+                <button id="home" class="home">Fork another food?</button>
+
+            </div>
+        </div>
     </main>
     <!-- Optional JavaScript; choose one of the two! -->
-    <script src="script/home-page.js"></script>
+    <script src="script/favorites-page.js"></script>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 

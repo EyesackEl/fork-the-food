@@ -1,34 +1,34 @@
 var ingredientList = document.querySelector('#ingredient-input');
 var addIng = document.querySelector('#ingInput');
 var ulItems = document.querySelector('#ulItems');
-var loStoKeySelect = 0;
+// var loStoKeySelect = 0;
 
 addIng.addEventListener('click', enterButton);
 
-
 function enterButton() {
-    var userInput = document.querySelector('input').value;
-    
-    if(document.getElementById('ingredient-input').value.length == 0) {
-        alert('blank');
+  var userInput = document.querySelector('input').value;
+  
+  if(document.getElementById('ingredient-input').value.length == 0) {
+    alert('blank');
+  } else {
+    listSearchedItem(userInput)
+    // localStorage.setItem(loStoKeySelect, JSON.stringify(userInput));
+    // loStoKeySelect++;
+  }
+};
 
-    }else {
-        var listedItems = document.querySelector('#display-items');
+function listSearchedItem(userInput){
+  var listedItems = document.querySelector('#display-items');
 
-        var itemsEntered = document.createElement('div');
-        var enterText = document.createElement('h3');
-        itemsEntered.setAttribute("id", "listed-ing");
-    
-        enterText.textContent = userInput;
-    
-        listedItems.append(itemsEntered);
-        itemsEntered.append(enterText);
+  var itemsEntered = document.createElement('div');
+  var enterText = document.createElement('h3');
+  itemsEntered.setAttribute("id", "listed-ing");
 
-        localStorage.setItem(loStoKeySelect, JSON.stringify(userInput));
-        loStoKeySelect++;
-    }
-}
+  enterText.textContent = userInput;
 
+  listedItems.append(itemsEntered);
+  itemsEntered.append(enterText);
+};
 
 $( function() {
     var availableTags = [

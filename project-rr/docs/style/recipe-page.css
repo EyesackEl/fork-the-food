@@ -1,3 +1,7 @@
+
+:root {
+    --favtext: "Favorite recipe?";
+}
 body {
     background-color: rgb(58, 73, 58);
     color:antiquewhite;
@@ -47,7 +51,9 @@ button {
     -moz-transition: width .5s cubic-bezier(.36,.26,0,1.02);
     -o-transition: width .5s cubic-bezier(.36,.26,0,1.02);
     transition: width .5s cubic-bezier(.36,.26,0,1.02);
+    
 }
+
 .fav-button-text {
     text-shadow: 0px -1px 0px rgb(14, 14, 14);
     position: absolute;
@@ -69,13 +75,12 @@ button {
     width: 170px;
     transition: width .5s cubic-bezier(.36,.26,0,1.02) .1s,
     color .7s cubic-bezier(.36,.26,0,1.02), 
-    filter .1s cubic-bezier(.36,.26,0,1.02) .3s, 
     box-shadow .5s cubic-bezier(.36,.26,0,1.02);
 }
 .fav-button-text:hover::after {
     position: absolute;
     font-weight: 700;
-    content: "Favorite recipe?";
+    content: var(--favtext);
     white-space: nowrap;
     color: rgb(65, 58, 34);
     opacity: 0;
@@ -86,16 +91,57 @@ button {
     padding: 20px;
     left: 0px;
     text-shadow: none;
-    /* filter: drop-shadow(0 0 3px black); */
+    filter: none;
     -webkit-animation: fadeIn 1.5s cubic-bezier(.34,.3,0,1.02) forwards;
     -moz-animation: fadeIn 1.5s cubic-bezier(.34,.3,0,1.02) forwards;
     -o-animation: fadeIn 1.5s cubic-bezier(.34,.3,0,1.02) forwards;
     animation: fadeIn .5s cubic-bezier(.34,.3,0,1.02) .35s forwards;
 }
-.fav-button-text::after {
-    filter: none;
-}
 
+.favorite-button:focus {    
+    background-color: yellow;
+    filter: drop-shadow(0px 0px 0px black);
+    position: absolute;
+    animation: bounce 1s cubic-bezier(.36,.83,0,1.02) .15s forwards;
+    width: 43px;
+    filter: drop-shadow(0px 0px 4px rgb(200, 201, 153));
+
+    transition: width .5s cubic-bezier(.36,.26,0,1.02) .2s;
+}
+.favorite-button:active {
+    background-color: rgb(255, 255, 167);;
+    filter: drop-shadow(0px 0px 0px black);
+
+}
+.favorite-button:visited {
+    
+    filter: drop-shadow(0px 0px 0px black);
+
+}
+#listed-ing {
+    background-color: rgba(30, 34, 30, 0.548);
+    border-radius: 10px;
+    margin: 2px auto;
+    padding: 7px;
+    width: 30%;
+}
+#listed-ing h3 {
+    font-size: 100%;
+}
+.recipe-description{
+    border: 1px solid rgb(0, 0, 0);
+    background-color: rgb(30, 34, 30);
+    filter: drop-shadow(0px 2px 0px rgba(255, 255, 255, 0.452));
+    border-radius: 5px;
+    width: 35%;
+    margin: auto;
+    overflow: hidden;
+    word-wrap: wrap;
+}
+#recipe-picture {
+    border-radius: 4px;
+    filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.452));
+}
 @-webkit-keyframes fadeIn {
     0% {
         display:contents;
@@ -158,5 +204,19 @@ button {
     100% {
         display:contents;
         opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0px);
+    }
+  
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
     }
 }
