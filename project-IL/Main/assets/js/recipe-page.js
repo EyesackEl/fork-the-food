@@ -1,9 +1,11 @@
 var favBtnEl = document.getElementById('favBtn');
 var homeBtnEl = document.querySelector('#homeBtn');
 var recipeNameEl = document.querySelector('#recName');
-var ingListEl = document.querySelector('#ingList');
+var ingListEl = document.querySelector('#display-items');
 var recipeLinks = document.querySelectorAll('a');
 var recipeImg = document.querySelector('img');
+var numberCounter = localStorage.length;
+var recipeId
 
 function getRandom(max) {
     return Math.floor(Math.random() * max)
@@ -29,6 +31,7 @@ function renderRecipe(infoRes, haveIng) {
     var ingArr = [];
     var haveIngArr = [];
     for (i = 0; i < recipeLinks.length; i++) {
+        console.log(infoRes)
         recipeLinks[i].setAttribute('href', infoRes.sourceUrl)
     }
 
@@ -50,8 +53,10 @@ function renderRecipe(infoRes, haveIng) {
 
 
     for (var i = 0; i < ingArr.length; i++) {
-        var ingListItem = document.createElement('li');
+        var ingListWrap = document.createElement('div')
+        var ingListItem = document.createElement('h3');
 
+        ingListWrap.setAttribute('id', 'listed-ing')
         // Cross references users inputted ingredients with the ingredients the recipe uses
         //and makes them render a different color
         for (var j = 0; j < haveIngArr.length; j++ ) {
@@ -63,8 +68,8 @@ function renderRecipe(infoRes, haveIng) {
         // $(ingListItem).css('list-style-position', 'inside');
 
         $(ingListItem).text(ingArr[i])
-        
-        ingListEl.append(ingListItem)
+        ingListWrap.append(ingListItem)
+        ingListEl.append(ingListWrap)
     }
 
     
@@ -89,8 +94,8 @@ function getYoutubeVid(recName) {
 
 // Fetches the recipe with the corresponding ID sends it to the function that handles rendering
 function getRecipeInfo(recipeId, haveIng) {
-    var infoQueryUrl = 'https://api.spoonacular.com/recipes/' + recipeId +'/information?apiKey=d5f42991b1244279ae27672e8f220a61'
-
+    var infoQueryUrl = 'https://api.spoonacular.com/recipes/' + recipeId +'/information?apiKey=a0c5df7d8b684042918e3dfb461d525a'
+    console.log(infoQueryUrl)
     fetch(infoQueryUrl) 
         .then(function(response) {
             if (response.ok) {
@@ -106,7 +111,7 @@ function getRecipeInfo(recipeId, haveIng) {
 
 // Fetches and returns an id of a recipe with matching ingredients
 function getRecipe(ingList) {
-    var recipeQueryUrl = 'https://api.spoonacular.com/recipes/findByIngredients?apiKey=d5f42991b1244279ae27672e8f220a61&ingredients=' + ingList;
+    var recipeQueryUrl = 'https://api.spoonacular.com/recipes/findByIngredients?apiKey=a0c5df7d8b684042918e3dfb461d525a&ingredients=' + ingList;
 
     fetch(recipeQueryUrl) 
         .then(function(response) {
@@ -119,7 +124,7 @@ function getRecipe(ingList) {
 
             var chosenRecipeNum = getRandom(recipeRes.length);
 
-            var recipeId = recipeRes[chosenRecipeNum].id;
+            recipeId = recipeRes[chosenRecipeNum].id;
 
             var haveIng = recipeRes[chosenRecipeNum].usedIngredients
 
@@ -136,7 +141,11 @@ homeBtnEl.addEventListener('click', function() {
 
 // Handles adding a recipe to the favorites list
 favBtnEl.addEventListener('click', function () {
-    
+    console.log(recipeId)
+    localStorage.setItem(numberCounter, recipeId)
+    console.log(localStorage.getItem(localStorage.key(numberCounter)));
+    // location.assign('./favorites-page.html/')
+    document.documentElement.style.setProperty('--favtext', 'asdasdasda')
 })
 
 var tag = document.createElement('script');
