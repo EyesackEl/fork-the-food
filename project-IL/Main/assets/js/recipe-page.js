@@ -21,7 +21,7 @@ function init() {
         var ingList = (searchParams.split('='))[1].split(',').join(',+');
         getRecipe(ingList);
     }
-
+    
 }
 
 // Handles all rendering
@@ -70,9 +70,26 @@ function renderRecipe(infoRes, haveIng) {
     
 }
 
+function getYoutubeVid(recName) {
+    var youtubeQueryUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyAYV9cvdG_Bh9ic8g3BQJg4WrdapgWG3gQ&type=video&q=" + recName;
+
+    fetch(youtubeQueryUrl)
+        .then(function(response) {
+            if (response.ok) {
+                return response.json();
+            }
+        })
+        .then(function(youtubeRes) {
+            console.log(youtubeRes)
+            var chosenVideoId = youtubeRes.items[getRandom((youtubeRes.items).length)].id.videoId
+            console.log(chosenVideoId)
+            player.loadVideoById(chosenVideoId)
+        })
+}
+
 // Fetches the recipe with the corresponding ID sends it to the function that handles rendering
 function getRecipeInfo(recipeId, haveIng) {
-    var infoQueryUrl = 'https://api.spoonacular.com/recipes/' + recipeId +'/information?apiKey=10ac6b34fd89405ea77249343be0c034'
+    var infoQueryUrl = 'https://api.spoonacular.com/recipes/' + recipeId +'/information?apiKey=d5f42991b1244279ae27672e8f220a61'
 
     fetch(infoQueryUrl) 
         .then(function(response) {
@@ -83,12 +100,13 @@ function getRecipeInfo(recipeId, haveIng) {
         .then(function(infoRes) {
             console.log(infoRes)
             renderRecipe(infoRes, haveIng)
+            getYoutubeVid(infoRes.title)
         })
 }
 
 // Fetches and returns an id of a recipe with matching ingredients
 function getRecipe(ingList) {
-    var recipeQueryUrl = 'https://api.spoonacular.com/recipes/findByIngredients?apiKey=10ac6b34fd89405ea77249343be0c034&ingredients=' + ingList;
+    var recipeQueryUrl = 'https://api.spoonacular.com/recipes/findByIngredients?apiKey=d5f42991b1244279ae27672e8f220a61&ingredients=' + ingList;
 
     fetch(recipeQueryUrl) 
         .then(function(response) {
@@ -120,5 +138,42 @@ homeBtnEl.addEventListener('click', function() {
 favBtnEl.addEventListener('click', function () {
     
 })
+
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+var player;
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        height: '250',
+        width: '500',
+        videoId: '5Peo-ivmupE',
+        playerVars: {
+            'playsinline': 1
+        },
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
+function onPlayerReady(event) {
+    event.target.playVideo();
+}
+
+var done = false;
+function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING && !done) {
+        done = true;
+    }
+}
+
+function stopVideo() {
+    player.stopVideo();
+}
 
 init();
