@@ -9,7 +9,6 @@ var loStoKeySelect = 0;
 generate.addEventListener('click', enterButton);
 clearButton.addEventListener('click', clearAll)
 
-
 function enterButton() {
     var userInput = document.querySelector('input').value;
     
@@ -27,12 +26,22 @@ function enterButton() {
     
         enterText.textContent = userInput;
     
+        var deleteButton = document.createElement('button')
+        deleteButton.setAttribute('class', 'btn-close')
+        deleteButton.setAttribute('aria-label', 'Close')
+
         listedItems.append(itemsEntered);
         itemsEntered.append(enterText);
+        itemsEntered.append(deleteButton);
 
         localStorage.setItem(loStoKeySelect, JSON.stringify(userInput));
         loStoKeySelect++;
         renderMessage()
+
+        deleteButton.addEventListener('click', function(event) {
+            console.log(event.target)
+            event.target.parentElement.remove()
+        })
     }
 }
 
@@ -56,38 +65,8 @@ function renderMessage() {
         createList(userIngredientListItems[x])
 
         function createList (food) {
-            var li = document.createElement('li')
-
-            var enterText = document.createElement('h4')
-            var deleteButton = document.createElement('button')
-
-    
-            enterText.setAttribute('style', 'border: 2px solid black')
-            enterText.setAttribute('style', 'padding: 20px')
-            enterText.setAttribute('style', 'list-style: none')
-            
-            deleteButton.setAttribute('class', 'btn-close')
-            deleteButton.setAttribute('aria-label', 'Close')
-
-            enterText.textContent = userIngredientListItems.slice(-1)
-
-
-            li.appendChild(deleteButton)
-            li.appendChild(enterText)
-        
-            listedItems.appendChild(li)
-
-           
         }
-        x++
+
+        x++   
     }
 }
-listedItems.addEventListener('click', function(event) {
-    var element = event.target;
-
-    if (element.matches('button') === true) {
-        var index = element.parentElement.getAttribute('data-index')
-        userIngredientListItems.splice(index, 1) 
-        renderMessage();
-    }
-})
