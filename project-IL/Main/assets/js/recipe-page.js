@@ -1,4 +1,5 @@
 var favBtnEl = document.getElementById('favBtn');
+var favPageEl = document.querySelector('#favPageBtn')
 var homeBtnEl = document.querySelector('#homeBtn');
 var recipeNameEl = document.querySelector('#recName');
 var ingListEl = document.querySelector('#display-items');
@@ -94,7 +95,7 @@ function getYoutubeVid(recName) {
 
 // Fetches the recipe with the corresponding ID sends it to the function that handles rendering
 function getRecipeInfo(recipeId, haveIng) {
-    var infoQueryUrl = 'https://api.spoonacular.com/recipes/' + recipeId +'/information?apiKey=a0c5df7d8b684042918e3dfb461d525a'
+    var infoQueryUrl = 'https://api.spoonacular.com/recipes/' + recipeId +'/information?apiKey=db6b592f0de5425ab610ae7dcb887346'
     console.log(infoQueryUrl)
     fetch(infoQueryUrl) 
         .then(function(response) {
@@ -111,7 +112,7 @@ function getRecipeInfo(recipeId, haveIng) {
 
 // Fetches and returns an id of a recipe with matching ingredients
 function getRecipe(ingList) {
-    var recipeQueryUrl = 'https://api.spoonacular.com/recipes/findByIngredients?apiKey=a0c5df7d8b684042918e3dfb461d525a&ingredients=' + ingList;
+    var recipeQueryUrl = 'https://api.spoonacular.com/recipes/findByIngredients?apiKey=db6b592f0de5425ab610ae7dcb887346&ingredients=' + ingList;
 
     fetch(recipeQueryUrl) 
         .then(function(response) {
@@ -134,19 +135,7 @@ function getRecipe(ingList) {
         })
 }
 
-// Sends user back to the home page when 'fork another food' button is pressed
-homeBtnEl.addEventListener('click', function() {
-    location.assign('./home-page.html')
-})
 
-// Handles adding a recipe to the favorites list
-favBtnEl.addEventListener('click', function () {
-    console.log(recipeId)
-    localStorage.setItem(numberCounter, recipeId)
-    console.log(localStorage.getItem(localStorage.key(numberCounter)));
-    // location.assign('./favorites-page.html/')
-    document.documentElement.style.setProperty('--favtext', 'asdasdasda')
-})
 
 var tag = document.createElement('script');
 
@@ -184,5 +173,23 @@ function onPlayerStateChange(event) {
 function stopVideo() {
     player.stopVideo();
 }
+
+favPageEl.addEventListener('click', function() {
+    location.assign('./favorites-page.html')
+})
+
+// Sends user back to the home page when 'fork another food' button is pressed
+homeBtnEl.addEventListener('click', function() {
+    location.assign('./home-page.html')
+})
+
+// Handles adding a recipe to the favorites list
+favBtnEl.addEventListener('click', function () {
+    console.log(recipeId)
+    localStorage.setItem(numberCounter, recipeId)
+    console.log(localStorage.getItem(localStorage.key(numberCounter)));
+    // location.assign('./favorites-page.html/')
+    document.documentElement.style.setProperty('--favtext', 'asdasdasda')
+})
 
 init();
