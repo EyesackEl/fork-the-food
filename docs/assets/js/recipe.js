@@ -24,7 +24,6 @@ function init() {
         var ingList = (searchParams.split('='))[1].split(',').join(',+');
         getRecipe(ingList);
     }
-    
 }
 
 // Handles all rendering
@@ -136,7 +135,7 @@ function getRecipe(ingList) {
 }
 
 
-
+// YouTube video rendering
 var tag = document.createElement('script');
 
 tag.src = "https://www.youtube.com/iframe_api";
@@ -175,12 +174,12 @@ function stopVideo() {
 }
 
 favPageEl.addEventListener('click', function() {
-    location.assign('./favorites-page.html')
+    location.assign('./favorites.html')
 })
 
 // Sends user back to the home page when 'fork another food' button is pressed
 homeBtnEl.addEventListener('click', function() {
-    location.assign('./home-page.html')
+    location.assign('./index.html')
 })
 
 // Handles adding a recipe to the favorites list
@@ -188,7 +187,6 @@ favBtnEl.addEventListener('click', function () {
     console.log(recipeId)
     localStorage.setItem(numberCounter, recipeId)
     console.log(localStorage.getItem(localStorage.key(numberCounter)));
-    // location.assign('./favorites-page.html/')
     document.documentElement.style.setProperty('--favtext', 'asdasdasda')
 })
 
