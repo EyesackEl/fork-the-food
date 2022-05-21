@@ -43,7 +43,7 @@ function displayFavorites() {
 
 
 function getRecipeName(recipeId, savedRecipe, deleteBtn, listItemWrap) {
-    var recQueryUrl = 'https://api.spoonacular.com/recipes/' + recipeId +'/information?apiKey=a0c5df7d8b684042918e3dfb461d525a'
+    var recQueryUrl = 'https://api.spoonacular.com/recipes/' + recipeId +'/information?apiKey=db6b592f0de5425ab610ae7dcb887346'
 
     fetch(recQueryUrl) 
     .then(function(response) {
