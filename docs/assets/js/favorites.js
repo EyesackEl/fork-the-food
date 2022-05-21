@@ -61,7 +61,7 @@ function getRecipeName(recipeId, savedRecipe, deleteBtn, listItemWrap) {
 }
 
 function sendToRecipe(recipeId) {
-    location.assign('./recipe-page.html?id=' + recipeId)
+    location.assign('./recipe.html?id=' + recipeId)
 }
 
 $(document).on('click','.listed-recipe',function(){
@@ -78,7 +78,7 @@ $(document).on('click','.deleteBtn',function() {
 })
 
 homeBtn.addEventListener('click', function() {
-     location.assign('./home-page.html')
+     location.assign('./index.html')
 })
 
 displayFavorites();
