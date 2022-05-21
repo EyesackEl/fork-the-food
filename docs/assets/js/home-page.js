@@ -11,7 +11,7 @@ generate.addEventListener('click', getIng);
 
 
 function sendIng(allIngArr) {
-    var queryString = '../main/recipe-page.html?ing='
+    var queryString = './recipe-page.html?ing='
 
     for (i = 0; i < allIngArr.length; i++) {
         if (i == (allIngArr.length)-1){
