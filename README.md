@@ -18,3 +18,8 @@
 
 ## Deployed Application Link
 https://eyesackel.github.io/fork-the-food/
+
+## Credits
+    Ryan Reeves - https://github.com/rreeves1996
+    Sherry - https://github.com/skaur816
+    Christina Hong - https://github.com/c1008h
